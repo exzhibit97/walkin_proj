@@ -24,7 +24,7 @@
   <vaadin-text-field class="full-width" value="Doe" id="lastName"></vaadin-text-field>
  </vaadin-form-item>
  <vaadin-button theme="primary" id="add" on-click="add">
-   Primary 
+   Add to db
  </vaadin-button>
 </vaadin-form-layout>
 <vaadin-vertical-layout id="vaadinVerticalLayout" style="width: 100%; height: 100%;">
@@ -34,17 +34,14 @@
  </vaadin-button>
 </vaadin-vertical-layout>
 <vaadin-form-layout style="width: 100%; height: 100%;">
- <vaadin-text-field id="updateNameId"></vaadin-text-field>
- <vaadin-text-field id="updateName"></vaadin-text-field>
+ <vaadin-text-field id="updateNameId" label="Enter Id you want to update"></vaadin-text-field>
+ <vaadin-text-field id="updateName" label="Enter final name of given id"></vaadin-text-field>
  <vaadin-button id="confirmUpdateName" on-click="update">
    Update name 
  </vaadin-button>
 </vaadin-form-layout>
 <vaadin-horizontal-layout style="width: 100%; height: 100%;">
  <vaadin-grid items="[[items]]" id="grid"></vaadin-grid>
- <vaadin-button theme="primary" id="displayGrid">
-   Primary 
- </vaadin-button>
 </vaadin-horizontal-layout>
 </template>
 

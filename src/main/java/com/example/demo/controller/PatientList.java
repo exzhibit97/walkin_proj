@@ -47,8 +47,6 @@ public class PatientList extends PolymerTemplate<PatientList.PatientListModel> {
     private TextField updateNameId;
     @Id("updateName")
     private TextField updateName;
-    @Id("displayGrid")
-    private Button displayGrid;
     @Id("grid")
     private Grid<Patient> grid;
 

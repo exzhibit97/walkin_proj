@@ -1,0 +1,65 @@
+<link rel="import" href="bower_components/polymer/polymer.html">
+<link rel="import" href="bower_components/vaadin-form-layout/src/vaadin-form-layout.html">
+<link rel="import" href="bower_components/vaadin-form-layout/src/vaadin-form-item.html">
+<link rel="import" href="bower_components/vaadin-text-field/src/vaadin-text-field.html">
+<link rel="import" href="bower_components/vaadin-button/src/vaadin-button.html">
+<link rel="import" href="bower_components/vaadin-ordered-layout/src/vaadin-vertical-layout.html">
+<link rel="import" href="bower_components/vaadin-ordered-layout/src/vaadin-horizontal-layout.html">
+<link rel="import" href="bower_components/vaadin-grid/src/vaadin-grid.html">
+
+<dom-module id="patient-list">
+    <template>
+<style include="shared-styles">
+            :host {
+                display: block;
+            }
+        </style>
+<vaadin-form-layout style="width: 100%; height: 100%;">
+ <vaadin-form-item>
+  <label slot="label">First Name</label>
+  <vaadin-text-field class="full-width" value="Jane" id="firstName"></vaadin-text-field>
+ </vaadin-form-item>
+ <vaadin-form-item>
+  <label slot="label">Last Name</label>
+  <vaadin-text-field class="full-width" value="Doe" id="lastName"></vaadin-text-field>
+ </vaadin-form-item>
+ <vaadin-button theme="primary" id="add" on-click="add">
+   Primary 
+ </vaadin-button>
+</vaadin-form-layout>
+<vaadin-vertical-layout id="vaadinVerticalLayout" style="width: 100%; height: 100%;">
+ <vaadin-text-field id="giveId" label="Give id"></vaadin-text-field>
+ <vaadin-button id="confirmGiveId" on-click="delete">
+   Confirm delete 
+ </vaadin-button>
+</vaadin-vertical-layout>
+<vaadin-form-layout style="width: 100%; height: 100%;">
+ <vaadin-text-field id="updateNameId"></vaadin-text-field>
+ <vaadin-text-field id="updateName"></vaadin-text-field>
+ <vaadin-button id="confirmUpdateName" on-click="update">
+   Update name 
+ </vaadin-button>
+</vaadin-form-layout>
+<vaadin-horizontal-layout style="width: 100%; height: 100%;">
+ <vaadin-grid items="[[items]]" id="grid"></vaadin-grid>
+ <vaadin-button theme="primary" id="displayGrid">
+   Primary 
+ </vaadin-button>
+</vaadin-horizontal-layout>
+</template>
+
+    <script>
+        class PatientList extends Polymer.Element {
+            static get is() {
+                return 'patient-list';
+            }
+
+            static get properties() {
+                return {
+                    // Declare your properties here.
+                };
+            }
+        }
+        customElements.define(PatientList.is, PatientList);
+    </script>
+</dom-module>

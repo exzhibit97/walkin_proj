@@ -6,14 +6,13 @@ import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.HtmlImport;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.polymertemplate.EventHandler;
 import com.vaadin.flow.component.polymertemplate.Id;
 import com.vaadin.flow.component.polymertemplate.PolymerTemplate;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.data.renderer.TemplateRenderer;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.templatemodel.TemplateModel;
-import org.atmosphere.config.service.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
@@ -53,8 +52,18 @@ public class PatientList extends PolymerTemplate<PatientList.PatientListModel> {
 
     @EventHandler
     public void add() {
-        Patient p = new Patient(firstName.getValue(), lastName.getValue());
-        patientRepository.save(p);
+        try {
+            if (firstName.getValue().length() > 0 && lastName.getValue().length() > 0) {
+                Patient p = new Patient(firstName.getValue(), lastName.getValue());
+                patientRepository.save(p);
+                grid.setItems(patientRepository.findAll());
+
+            } else {
+                Notification.show("Warning!" + "You need to fill all fields!", 5000, Notification.Position.MIDDLE);
+            }
+        } catch (Exception e) {
+
+        }
     }
 
     @EventHandler
